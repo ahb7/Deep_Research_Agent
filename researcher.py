@@ -10,6 +10,7 @@ from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import END
 from langgraph.checkpoint.memory import MemorySaver
+from langchain_groq import ChatGroq
 
 load_dotenv()
 
@@ -25,19 +26,30 @@ class ResearchState(TypedDict):
 # 2. Initialize Hugging Face LLM
 # We'll use Mistral-7B-Instruct or Llama-3-8B-Instruct (both excellent & free)
 # Use Qwen 2.5 (very powerful) or Llama 3.1
-repo_id = "Qwen/Qwen2.5-72B-Instruct"
+#repo_id = "Qwen/Qwen2.5-72B-Instruct"
+'''
+repo_id="meta-llama/Llama-3.1-8B-Instruct"
 
 # Initialize the base endpoint
 llm_endpoint = HuggingFaceEndpoint(
     repo_id=repo_id,
     max_new_tokens=2048,  
     temperature=0.1,
-    provider="auto",
+    provider="hf-inference",
     huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN")
 )
 
 # Wrap it in ChatHuggingFace
 llm = ChatHuggingFace(llm=llm_endpoint)
+'''
+
+# Replace your previous HuggingFaceEndpoint setup with this:
+llm = ChatGroq(
+    model="llama-3.1-8b-instant",  # Extremely fast for research loops
+    api_key=os.getenv("GROQ_API_KEY"),
+    temperature=0.1,
+    max_tokens=2048  # This prevents the "cut-off" sentences you saw earlier
+)
 
 search_tool = TavilySearch(max_results=3)
 
