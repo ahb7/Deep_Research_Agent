@@ -26,5 +26,6 @@ Installation & Setup:
     streamlit run app.py
 
 
-    ![DRA_Image](https://github.com/user-attachments/assets/aed236f6-9bed-4371-9c6b-a010f33083f2)
+
+<img width="1378" height="790" alt="DRA_Image" src="https://github.com/user-attachments/assets/d21b2f5a-1305-4129-8ced-24c305b45d75" />
 
