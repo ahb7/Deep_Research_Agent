@@ -24,4 +24,7 @@ Installation & Setup:
 
     Run the Application:
     streamlit run app.py
-    
+
+
+    ![DRA_Image](https://github.com/user-attachments/assets/aed236f6-9bed-4371-9c6b-a010f33083f2)
+
